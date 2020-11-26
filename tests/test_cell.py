@@ -1,38 +1,22 @@
 
 
+from source.cell import CellCross, CellCZero, Cell
+
+
 def test_init_cell(cell):
 
-    assert cell.get_status() is None
+    assert cell == Cell()
 
 
-def test_set_to_cross(cell):
-    cell.set_cross()
+def test_cells_is_equals():
+    cell_1 = CellCross()
+    cell_2 = CellCross()
 
-    assert cell.get_status() == 1
-
-
-def test_set_zero(cell):
-    cell.set_zero()
-
-    assert cell.get_status() == 0
+    assert cell_1 == cell_2
 
 
-def test_set_busy_cross_cell(cell):
-    cell.set_cross()
-    cell.set_zero()
+def test_cells_is_not_equals():
+    cell_1 = CellCross()
+    cell_2 = CellCZero()
 
-    assert cell.get_status() == 1
-
-
-def test_set_busy_zero_cell(cell):
-    cell.set_zero()
-    cell.set_cross()
-
-    assert cell.get_status() == 0
-
-
-def test_cell_reset(cell):
-    cell.set_zero()
-    cell.reset()
-
-    assert cell.get_status() is None
+    assert (cell_1 == cell_2) is False
