@@ -1,5 +1,5 @@
 
-from source.cell import CellCZero, CellCross
+from source.cell import CellZero, CellCross
 
 
 class ProgressStatus:
@@ -14,18 +14,18 @@ class ProgressStatus:
     """
 
     def __init__(self):
-        self._status = CellCross
+        self._status = CellCross()
 
     def get_status(self):
         return self._status
 
     def step(self):
-        if issubclass(self._status, CellCross):
-            self._status = CellCZero
+        if isinstance(self._status, CellCross):
+            self._status = CellZero()
         else:
-            self._status = CellCross
+            self._status = CellCross()
         return self
 
     def reset(self):
-        self._status = CellCross
+        self._status = CellCross()
         return self
