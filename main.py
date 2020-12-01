@@ -1,7 +1,12 @@
+import tkinter as tk
 
-
-from source.console import ConsoleGame
+import source.gui.game_window as gui
 
 
 if __name__ == "__main__":
-    ConsoleGame().run()
+
+    root = tk.Tk()
+    root.title("Крестики-нолики")
+    game_window = gui.GameWindow(root, 3)
+
+    root.mainloop()
